@@ -50,9 +50,7 @@ public class Goods {
 
     void updateByDay() {
         if (getName().equals("Aged Brie")) {
-            if (isReachQualityTopLimit()) {
-                this.quality = getQuality() + 1;
-            }
+            increaseQuality();
         } else if (getName().equals("Backstage passes to a TAFKAL80ETC concert")) {
             increaseQuality();
 
