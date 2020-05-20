@@ -52,16 +52,6 @@ public class Goods {
         if (getName().equals("Aged Brie")) {
             if (isReachQualityTopLimit()) {
                 this.quality = getQuality() + 1;
-
-                if (getName().equals("Backstage passes to a TAFKAL80ETC concert")) {
-                    if (getSellIn() < 11) {
-                        increaseQuality();
-                    }
-
-                    if (getSellIn() < 6) {
-                        increaseQuality();
-                    }
-                }
             }
         } else if (getName().equals("Backstage passes to a TAFKAL80ETC concert")) {
             increaseQuality();
