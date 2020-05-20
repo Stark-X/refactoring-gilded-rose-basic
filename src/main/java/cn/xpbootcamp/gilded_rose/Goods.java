@@ -13,10 +13,6 @@ public class Goods {
         this.sellIn = sellIn;
     }
 
-    public void setQuality(int quality) {
-        this.quality = quality;
-    }
-
     public String getName() {
         return name;
     }
@@ -57,24 +53,20 @@ public class Goods {
                 && !getName().equals("Backstage passes to a TAFKAL80ETC concert")) {
             if (isReachQualityBottomLimit()) {
                 if (!getName().equals("Sulfuras, Hand of Ragnaros")) {
-                    setQuality(getQuality() - 1);
+                    this.quality = getQuality() - 1;
                 }
             }
         } else {
             if (isReachQualityTopLimit()) {
-                setQuality(getQuality() + 1);
+                this.quality = getQuality() + 1;
 
                 if (getName().equals("Backstage passes to a TAFKAL80ETC concert")) {
                     if (getSellIn() < 11) {
-                        if (isReachQualityTopLimit()) {
-                            setQuality(getQuality() + 1);
-                        }
+                        increaseQuality();
                     }
 
                     if (getSellIn() < 6) {
-                        if (isReachQualityTopLimit()) {
-                            setQuality(getQuality() + 1);
-                        }
+                        increaseQuality();
                     }
                 }
             }
@@ -89,17 +81,21 @@ public class Goods {
                 if (!getName().equals("Backstage passes to a TAFKAL80ETC concert")) {
                     if (isReachQualityBottomLimit()) {
                         if (!getName().equals("Sulfuras, Hand of Ragnaros")) {
-                            setQuality(getQuality() - 1);
+                            this.quality = getQuality() - 1;
                         }
                     }
                 } else {
-                    setQuality(0);
+                    this.quality = 0;
                 }
             } else {
-                if (isReachQualityTopLimit()) {
-                    setQuality(getQuality() + 1);
-                }
+                increaseQuality();
             }
+        }
+    }
+
+    private void increaseQuality() {
+        if (isReachQualityTopLimit()) {
+            this.quality = getQuality() + 1;
         }
     }
 }
