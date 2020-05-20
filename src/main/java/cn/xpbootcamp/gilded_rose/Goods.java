@@ -37,30 +37,30 @@ public class Goods {
     }
 
     void decreaseSellIn() {
-        setSellIn(getSellIn() - 1);
+        this.sellIn -= 1;
     }
 
     boolean isReachQualityTopLimit() {
-        return getQuality() < 50;
+        return this.quality < 50;
     }
 
     boolean isReachQualityBottomLimit() {
-        return getQuality() > 0;
+        return this.quality > 0;
     }
 
     void updateByDay() {
-        switch (getName()) {
+        switch (this.name) {
             case "Aged Brie":
                 increaseQuality();
                 break;
             case "Backstage passes to a TAFKAL80ETC concert":
                 increaseQuality();
 
-                if (getSellIn() < 11) {
+                if (this.sellIn < 11) {
                     increaseQuality();
                 }
 
-                if (getSellIn() < 6) {
+                if (this.sellIn < 6) {
                     increaseQuality();
                 }
                 break;
@@ -73,13 +73,13 @@ public class Goods {
 
         decreaseSellIn();
 
-        if (getSellIn() >= 0) {
+        if (this.sellIn >= 0) {
             return;
         }
-        if (getName().equals("Aged Brie")) {
+        if (this.name.equals("Aged Brie")) {
             increaseQuality();
         } else {
-            if (getName().equals("Backstage passes to a TAFKAL80ETC concert")) {
+            if (this.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
                 this.quality = 0;
             }
             decreaseQuality();
@@ -88,13 +88,13 @@ public class Goods {
 
     private void decreaseQuality() {
         if (isReachQualityBottomLimit()) {
-            this.quality = getQuality() - 1;
+            this.quality -= 1;
         }
     }
 
     private void increaseQuality() {
         if (isReachQualityTopLimit()) {
-            this.quality = getQuality() + 1;
+            this.quality += 1;
         }
     }
 }
