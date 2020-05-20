@@ -44,7 +44,11 @@ public class Goods {
         setSellIn(getSellIn() - 1);
     }
 
-    boolean isReachQualityLimit() {
+    boolean isReachQualityTopLimit() {
         return getQuality() < 50;
+    }
+
+    boolean isReachQualityBottomLimit() {
+        return getQuality() > 0;
     }
 }
