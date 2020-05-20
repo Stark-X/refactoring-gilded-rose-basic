@@ -43,4 +43,8 @@ public class Goods {
     void decreaseSellIn() {
         setSellIn(getSellIn() - 1);
     }
+
+    boolean isReachQualityLimit() {
+        return getQuality() < 50;
+    }
 }

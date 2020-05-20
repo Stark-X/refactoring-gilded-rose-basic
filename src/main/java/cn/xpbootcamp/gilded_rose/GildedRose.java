@@ -17,18 +17,18 @@ class GildedRose {
                     }
                 }
             } else {
-                if (good.getQuality() < 50) {
+                if (good.isReachQualityLimit()) {
                     good.setQuality(good.getQuality() + 1);
 
                     if (good.getName().equals("Backstage passes to a TAFKAL80ETC concert")) {
                         if (good.getSellIn() < 11) {
-                            if (good.getQuality() < 50) {
+                            if (good.isReachQualityLimit()) {
                                 good.setQuality(good.getQuality() + 1);
                             }
                         }
 
                         if (good.getSellIn() < 6) {
-                            if (good.getQuality() < 50) {
+                            if (good.isReachQualityLimit()) {
                                 good.setQuality(good.getQuality() + 1);
                             }
                         }
@@ -52,7 +52,7 @@ class GildedRose {
                         good.setQuality(0);
                     }
                 } else {
-                    if (good.getQuality() < 50) {
+                    if (good.isReachQualityLimit()) {
                         good.setQuality(good.getQuality() + 1);
                     }
                 }
