@@ -39,4 +39,8 @@ public class Goods {
     public String toString() {
         return this.name + ", " + this.sellIn + ", " + this.quality;
     }
+
+    void decreaseSellIn() {
+        setSellIn(getSellIn() - 1);
+    }
 }

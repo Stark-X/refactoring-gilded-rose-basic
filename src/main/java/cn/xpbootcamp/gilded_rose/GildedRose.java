@@ -37,7 +37,7 @@ class GildedRose {
             }
 
             if (!good.getName().equals("Sulfuras, Hand of Ragnaros")) {
-                good.setSellIn(good.getSellIn() - 1);
+                good.decreaseSellIn();
             }
 
             if (good.getSellIn() < 0) {
@@ -59,4 +59,5 @@ class GildedRose {
             }
         }
     }
+
 }
