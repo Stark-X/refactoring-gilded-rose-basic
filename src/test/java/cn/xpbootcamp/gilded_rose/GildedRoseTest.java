@@ -11,14 +11,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 class GildedRoseTest {
 
     @ParameterizedTest
-    @MethodSource({"provideAgedBries", "provideBackstagePass", "provideSulfuras", "provideRegularItems"})
-    void should_update_item_correctly(TestFixture testFixture) {
-        Item item = createItem(testFixture.name, testFixture.sellIn, testFixture.quality);
+    @MethodSource({"provideAgedBries", "provideBackstagePass", "provideSulfuras", "provideRegularGoods"})
+    void should_update_good_correctly(TestFixture testFixture) {
+        Goods goods = createGoods(testFixture.name, testFixture.sellIn, testFixture.quality);
 
-        new GildedRose(new Item[]{item}).update_quality();
+        new GildedRose(new Goods[]{goods}).update_quality();
 
-        Item expectedItem = createItem(testFixture.name, testFixture.updatedSellIn, testFixture.updatedQuality);
-        assertThat(item.toString()).isEqualTo(expectedItem.toString());
+        Goods expectedGoods = createGoods(testFixture.name, testFixture.updatedSellIn, testFixture.updatedQuality);
+        assertThat(goods.toString()).isEqualTo(expectedGoods.toString());
     }
 
     private static Stream<TestFixture> provideAgedBries() {
@@ -56,7 +56,7 @@ class GildedRoseTest {
         );
     }
 
-    private static Stream<TestFixture> provideRegularItems() {
+    private static Stream<TestFixture> provideRegularGoods() {
         return Stream.of(
                 TestFixture.createRegular("+5 Dexterity Vest", 10, 20, 9, 19),
                 TestFixture.createRegular("Elixir of the Mongoose", 2, 0, 1, 0),
@@ -66,8 +66,8 @@ class GildedRoseTest {
         );
     }
 
-    private static Item createItem(String name, int sellIn, int quality) {
-        return new Item(name, sellIn, quality);
+    private static Goods createGoods(String name, int sellIn, int quality) {
+        return new Goods(name, sellIn, quality);
     }
 
     private static class TestFixture {
