@@ -49,11 +49,7 @@ public class Goods {
     }
 
     void updateByDay() {
-        if (!getName().equals("Aged Brie")
-                && !getName().equals("Backstage passes to a TAFKAL80ETC concert")) {
-            if (!getName().equals("Sulfuras, Hand of Ragnaros"))
-                decreaseQuality();
-        } else {
+        if (getName().equals("Aged Brie")) {
             if (isReachQualityTopLimit()) {
                 this.quality = getQuality() + 1;
 
@@ -67,24 +63,34 @@ public class Goods {
                     }
                 }
             }
+        } else if (getName().equals("Backstage passes to a TAFKAL80ETC concert")) {
+            increaseQuality();
+
+            if (getSellIn() < 11) {
+                increaseQuality();
+            }
+
+            if (getSellIn() < 6) {
+                increaseQuality();
+            }
+        } else {
+            if (!getName().equals("Sulfuras, Hand of Ragnaros"))
+                decreaseQuality();
         }
 
         if (!getName().equals("Sulfuras, Hand of Ragnaros")) {
             decreaseSellIn();
         }
 
-        if (getSellIn() < 0) {
-            if (!getName().equals("Aged Brie")) {
-                if (!getName().equals("Backstage passes to a TAFKAL80ETC concert")) {
-                    if (!getName().equals("Sulfuras, Hand of Ragnaros")) {
-                        decreaseQuality();
-                    }
-                } else {
-                    this.quality = 0;
-                }
-            } else {
-                increaseQuality();
-            }
+        if (getSellIn() >= 0) {
+            return;
+        }
+        if (getName().equals("Aged Brie")) {
+            increaseQuality();
+        } else if (getName().equals("Backstage passes to a TAFKAL80ETC concert")) {
+            this.quality = 0;
+        } else if (!getName().equals("Sulfuras, Hand of Ragnaros")) {
+            decreaseQuality();
         }
     }
 
