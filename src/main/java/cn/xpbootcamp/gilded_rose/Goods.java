@@ -65,15 +65,13 @@ public class Goods {
                 }
                 break;
             case "Sulfuras, Hand of Ragnaros":
-                break;
+                return;
             default:
                 decreaseQuality();
                 break;
         }
 
-        if (!getName().equals("Sulfuras, Hand of Ragnaros")) {
-            decreaseSellIn();
-        }
+        decreaseSellIn();
 
         if (getSellIn() >= 0) {
             return;
@@ -83,9 +81,6 @@ public class Goods {
         } else {
             if (getName().equals("Backstage passes to a TAFKAL80ETC concert")) {
                 this.quality = 0;
-            }
-            if (getName().equals("Sulfuras, Hand of Ragnaros")) {
-                return;
             }
             decreaseQuality();
         }
