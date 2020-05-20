@@ -1,21 +1,42 @@
 package cn.xpbootcamp.gilded_rose;
 
 public class Goods {
+    private String name;
+    private int sellIn;
+    private int quality;
 
-    public String name;
-
-    public int sell_in;
-
-    public int quality;
-
-    public Goods(String name, int sell_in, int quality) {
+    public void setName(String name) {
         this.name = name;
-        this.sell_in = sell_in;
+    }
+
+    public void setSellIn(int sellIn) {
+        this.sellIn = sellIn;
+    }
+
+    public void setQuality(int quality) {
+        this.quality = quality;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getSellIn() {
+        return sellIn;
+    }
+
+    public int getQuality() {
+        return quality;
+    }
+
+    public Goods(String name, int sellIn, int quality) {
+        this.name = name;
+        this.sellIn = sellIn;
         this.quality = quality;
     }
 
     @Override
     public String toString() {
-        return this.name + ", " + this.sell_in + ", " + this.quality;
+        return this.name + ", " + this.sellIn + ", " + this.quality;
     }
 }
